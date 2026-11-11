@@ -1,4 +1,3 @@
-import { cacheLife } from "next/cache";
 import { NextResponse } from "next/server";
 import { rateLimit } from "@/lib/rate-limit";
 
@@ -37,9 +36,6 @@ type GitHubPayload = {
 const USERNAME = "ahmadAI900";
 
 async function getGithubData(): Promise<GitHubPayload> {
-  "use cache";
-  cacheLife("hours");
-
   const headers: HeadersInit = {
     Accept: "application/vnd.github+json",
     "User-Agent": "alashraf-techub-site",

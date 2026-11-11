@@ -13,8 +13,6 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false, nocache: true },
 };
 
-export const instant = false;
-
 type InquiryRow = {
   id: number;
   name: string;

@@ -7,6 +7,7 @@ let schemaPromise: Promise<void> | null = null;
 export function getDb(): Client | null {
   const url = process.env.TURSO_DATABASE_URL;
   if (!url) return null;
+  if (process.env.NODE_ENV === "production" && url.startsWith("file:")) return null;
 
   if (!client) {
     client = createClient({
