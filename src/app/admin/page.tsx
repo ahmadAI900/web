@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { connection } from "next/server";
 import { cookies } from "next/headers";
 import { ArrowLeft, Inbox, Lock } from "lucide-react";
 import { ensureInquiriesTable, getDb } from "@/lib/db";
@@ -33,8 +32,6 @@ function serviceName(value: string | null) {
 export default async function AdminPage({
   searchParams,
 }: PageProps<"/admin">) {
-  await connection();
-
   const params = await searchParams;
   const queryError = Array.isArray(params.error) ? params.error[0] : params.error;
   const cookieStore = await cookies();
